@@ -1,4 +1,4 @@
-from cam import RunCamera
+from simple import RunCamera
 
 def main():
   RunCamera()
