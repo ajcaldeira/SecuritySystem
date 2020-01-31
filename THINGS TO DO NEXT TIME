@@ -1,0 +1,9 @@
+YOURE WORKING IN THIS FOLDER...
+
+Start the server.py
+
+parse.py gens an open cv image
+
+then 
+
+create another server and stream that image from open cv
