@@ -3,6 +3,7 @@ import urllib.request as urllibr
 import numpy as np
 
 def NumberFaces():
+    CAPTURE_COOLDOWN = False
     stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
@@ -19,7 +20,11 @@ def NumberFaces():
             print(faces)
             for (x,y,w,h) in faces:
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
-            cv2.imshow('i', i)
+                if not CAPTURE_COOLDOWN:
+                    cv2.imwrite('n.png',i)
+                    CAPTURE_COOLDOWN = True
+                    print('image taken')
+            #cv2.imshow('i', i)
             if cv2.waitKey(1) == 27:
                 exit(0)   
 NumberFaces()
