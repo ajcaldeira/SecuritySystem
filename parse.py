@@ -1,7 +1,7 @@
 import cv2
 import urllib.request as urllibr
 import numpy as np
-from process_image import *
+import process_image
 from datetime import datetime
 
 def NumberFaces():
@@ -24,7 +24,7 @@ def NumberFaces():
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
                 if not CAPTURE_COOLDOWN:
                     CAPTURE_COOLDOWN = True
-                    IMG_NAME = datetime.now().time() + '.png' # time object
+                    IMG_NAME = str(datetime.now().time())+ '.png' # time object
                     cv2.imwrite(IMG_NAME,i)
                     process_image.ProcessImage(IMG_NAME)
                     print('image taken')
