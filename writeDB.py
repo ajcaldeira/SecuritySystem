@@ -8,4 +8,4 @@ def WriteImage(img_data,date):
         cur.execute("INSERT INTO images (image, date) VALUES (HEX(AES_ENCRYPT(%s,'IlvdPuXqiNUa1ONh1V7HOAr1pRBbI7rh')),%s)", 
             (img_data, date))    
         con.commit()
-        con.close()
+        cur.close()
