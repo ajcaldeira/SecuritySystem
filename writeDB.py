@@ -9,4 +9,3 @@ def WriteImage(img_data,date):
             (img_data, date))    
         con.commit()
         con.close()
-        print("Number of rows updated:",  cur.rowcount)
