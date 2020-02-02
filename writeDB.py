@@ -1,6 +1,7 @@
 #DOCS: http://zetcode.com/db/mysqlpython/
 import pymysql
 import return_pass
+print(return_pass.GetPass())
 def WriteImage(img_data,date):
     con = pymysql.connect('localhost', 'root', return_pass.GetPass(), 'security')
     with con:    
