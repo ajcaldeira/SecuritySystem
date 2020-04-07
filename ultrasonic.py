@@ -12,7 +12,9 @@ GPIO.setup(ECHO,GPIO.IN)
 
 def sensor():
     GPIO.output(TRIG,False)
-
+    #initialise
+    pulse_start = 0
+    pulse_end = 0
     #time for it to start
     time.sleep(0.1)
 
