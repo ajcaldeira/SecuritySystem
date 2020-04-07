@@ -7,8 +7,8 @@ import os
 import subprocess
 import time
 FNULL = open(os.devnull, 'wb')
-US_STARTED = False #to check if the Ultraspnic sensor has been started
-def NumberFaces():
+
+def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sensor has been started
     CAPTURE_COOLDOWN = False
     try:
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
