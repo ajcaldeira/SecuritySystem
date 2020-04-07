@@ -56,7 +56,7 @@ if __name__ == '__main__':
                 #first time its executing
                 if(FIRST_RUN == 1):
                     t_start = datetime.now()
-                    FIRST_RUN = 1 #change this so it snot the first time anymore  
+                    FIRST_RUN = 0 #change this so it snot the first time anymore  
                 if NOTIF_CD_MINS <= CheckTime(t_start) and FIRST_RUN == 1:
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
