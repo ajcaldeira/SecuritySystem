@@ -7,6 +7,7 @@ import os
 import subprocess
 import time
 FNULL = open(os.devnull, 'wb')
+US_STARTED = False #to check if the Ultraspnic sensor has been started
 def NumberFaces():
     CAPTURE_COOLDOWN = False
     try:
@@ -16,8 +17,14 @@ def NumberFaces():
         subprocess.Popen(["python3", "simple.py", "/dev/null"], stdout=subprocess.DEVNULL)
         print("Stream Started!")
         subprocess.Popen(["python3", "ultrasonic.py"])
+        US_STARTED = True
         time.sleep(5)
         NumberFaces()
+    if not US_STARTED:
+        os.system("pkill -9 -f ultrasonic.py")
+        subprocess.Popen(["python3", "ultrasonic.py"])
+        US_STARTED = True
+        time.sleep(5)
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
     while True:
