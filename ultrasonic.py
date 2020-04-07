@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+from datetime import datetime
 GPIO.setmode(GPIO.BCM)
 import buzzer
 TRIG = 17 #orange
