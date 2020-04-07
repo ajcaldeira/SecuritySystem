@@ -3,10 +3,13 @@ import urllib.request as urllibr
 import numpy as np
 import process_image
 from datetime import datetime
-
+import os
 def NumberFaces():
     CAPTURE_COOLDOWN = False
-    stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+    try:
+        stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+    except:
+        print("STREAM NOT FOUND!")
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
     while True:
@@ -30,5 +33,4 @@ def NumberFaces():
                     print('image taken')
             #cv2.imshow('i', i)
             if cv2.waitKey(1) == 27:
-                exit(0)   
-NumberFaces()
+                exit(0)

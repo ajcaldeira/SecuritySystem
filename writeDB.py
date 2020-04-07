@@ -4,8 +4,9 @@ import return_pass
 import os
 import env
 ENC_KEY = os.getenv('ENC_KEY')
+DB_PASS = os.getenv('DB_PASS')
 def WriteImage(img_data,date):
-    con = pymysql.connect('localhost', 'root', return_pass.GetPass(), 'security')
+    con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
     with con:    
         cur = con.cursor() 
         
