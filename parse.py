@@ -6,16 +6,16 @@ from datetime import datetime
 import os
 import subprocess
 import time
+FNULL = open(os.devnull, 'w')
 def NumberFaces():
     CAPTURE_COOLDOWN = False
     try:
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        subprocess.Popen(["python3", "simple.py", "/dev/null"])
+        subprocess.Popen(["python3", "simple.py", "/dev/null"], stdout=subprocess.DEVNULL)
+        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"], stdout=FNULL,stderr=subprocess.STDOUT)
         print("Stream Started!")
-        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"])
-        print("Ultrasonic Started!")
         time.sleep(5)
         NumberFaces()
     bytes= b''
