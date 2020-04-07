@@ -14,6 +14,7 @@ GPIO.setup(ECHO,GPIO.IN)
 #VARS FOR TIME
 t_start = 0
 t_fin = 0
+FIRST_RUN = 1
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
@@ -52,10 +53,11 @@ if __name__ == '__main__':
                 time.sleep(0.2)
                 buzzer.alarmOff()
                 time.sleep(0.2)
-                if(t_start == 0):
+                #first time its executing
+                if(FIRST_RUN == 1):
                     t_start = datetime.now()
-                    
-                if NOTIF_CD_MINS <= CheckTime(t_start):
+                    FIRST_RUN = 1 #change this so it snot the first time anymore  
+                if NOTIF_CD_MINS <= CheckTime(t_start) and FIRST_RUN == 1:
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
