@@ -11,8 +11,8 @@ def NumberFaces():
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        list_files = subprocess.Popen(["python3", "simple.py"])
-        print("The exit code was: %d" % list_files.returncode)
+        list_files = subprocess.Popen(["python3", "simple.py"], stdout=subprocess.DEVNULL)
+        list_files = subprocess.Popen(["python3", "ultrasonic.py"], stdout=subprocess.DEVNULL)
         print("Stream Started!")
         time.sleep(5)
         NumberFaces()
@@ -28,7 +28,7 @@ def NumberFaces():
             i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, 1.1, 5)
-            print(faces)
+            #print(faces)
             for (x,y,w,h) in faces:
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
                 if not CAPTURE_COOLDOWN:
