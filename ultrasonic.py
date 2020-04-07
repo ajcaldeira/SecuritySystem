@@ -40,7 +40,7 @@ def sensor():
 def CheckTime(t_start):
     t_fin = datetime.now()
     time_diff = t_fin - t_start
-    print (f"its been: {time_diff} seconds")
+    #print (f"its been: {time_diff} seconds")
     return round(float(time_diff.total_seconds()),2)
     
 if __name__ == '__main__':
@@ -55,11 +55,12 @@ if __name__ == '__main__':
                 buzzer.alarmOff()
                 time.sleep(0.2)
                 if NOTIFICATION_COOLDOWN <= 0:
-                    #send notification through mqtt that someone is too close
                     NOTIFICATION_COOLDOWN = 10
                     t_start = datetime.now()
                     print('Notification sent!')
                 else:
+                    var = CheckTime(t_start)
+                    print(f"Its been {var} seconds")
                     NOTIFICATION_COOLDOWN = NOTIFICATION_COOLDOWN - CheckTime(t_start)
                     print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
             else:
