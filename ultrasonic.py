@@ -9,7 +9,9 @@ NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
 #GPIO.setwarnings(False)
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
-
+#VARS FOR TIME
+t_start = 0
+t_fin = 0
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
@@ -47,9 +49,11 @@ if __name__ == '__main__':
                 time.sleep(0.2)
                 if NOTIFICATION_COOLDOWN == 0:
                     #send notification through mqtt that someone is too close
-                    NOTIFICATION_COOLDOWN = 5
+                    NOTIFICATION_COOLDOWN = 0.5
                 else:
                     print('Notification on cooldown')
+                    t_start = datetime.now()
+                    NOTIFICATION_COOLDOWN = CheckTime()
             else:
                 buzzer.alarmOff()
             #print(f"Distance: {dist}")
@@ -58,4 +62,10 @@ if __name__ == '__main__':
         print("Measurement stopped by User")
         GPIO.cleanup()
 
-
+def CheckTime():
+    t_fin = datetime.now()
+    time_diff = t_fin - t_start
+    if time_diff < 0:
+        time_diff = 0 #avoid non zero values
+    return (time_diff.total_seconds() / 60)
+    
