@@ -7,7 +7,7 @@ TRIG = 17 #orange
 ECHO = 23 #green
 SPEED_SOUND = 34300
 NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
-NOTIF_CD_MINS = 5
+NOTIF_CD_MINS = 300 # 5 mins
 #GPIO.setwarnings(False)
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
@@ -42,7 +42,7 @@ def sensor():
 def CheckTime(t_start):
     t_fin = datetime.now()
     time_diff = t_fin - t_start
-    return round(float(time_diff.total_seconds() / 60),2)
+    return round(float(time_diff.total_seconds()),2)
     
 if __name__ == '__main__':
     try:
