@@ -50,12 +50,11 @@ if __name__ == '__main__':
             dist = sensor()
             if dist < 10:
                 print(f'Notification on cooldown FIRST : {NOTIFICATION_COOLDOWN}')
-
                 buzzer.alarmOn()
                 time.sleep(0.2)
                 buzzer.alarmOff()
                 time.sleep(0.2)
-                if NOTIF_CD_MINS >= CheckTime(t_start):
+                if round(float(NOTIF_CD_MINS)) >= CheckTime(t_start):
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
