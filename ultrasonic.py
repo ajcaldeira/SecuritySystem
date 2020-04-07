@@ -37,7 +37,13 @@ def sensor():
     distance = round(distance,2)
     return distance
 
-    
+def CheckTime():
+    t_fin = datetime.now()
+    time_diff = t_fin - t_start
+    if time_diff < 0:
+        time_diff = 0 #avoid non zero values
+    return (time_diff.total_seconds() / 60)
+        
 
 if __name__ == '__main__':
     try:
@@ -63,10 +69,3 @@ if __name__ == '__main__':
         print("Measurement stopped by User")
         GPIO.cleanup()
 
-def CheckTime():
-    t_fin = datetime.now()
-    time_diff = t_fin - t_start
-    if time_diff < 0:
-        time_diff = 0 #avoid non zero values
-    return (time_diff.total_seconds() / 60)
-    
