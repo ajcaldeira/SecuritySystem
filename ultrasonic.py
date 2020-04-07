@@ -7,6 +7,7 @@ TRIG = 17 #orange
 ECHO = 23 #green
 SPEED_SOUND = 34300
 NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
+NOTIF_CD_MINS = 0
 #GPIO.setwarnings(False)
 GPIO.setup(TRIG,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
@@ -55,13 +56,13 @@ if __name__ == '__main__':
                 buzzer.alarmOff()
                 time.sleep(0.2)
                 if NOTIFICATION_COOLDOWN <= 0:
-                    NOTIFICATION_COOLDOWN = 10
+                    NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
                 else:
                     var = CheckTime(t_start)
                     print(f"Its been {var} seconds")
-                    NOTIFICATION_COOLDOWN = NOTIFICATION_COOLDOWN - CheckTime(t_start)
+                    NOTIFICATION_COOLDOWN = NOTIF_CD_MINS - CheckTime(t_start)
                     print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
             else:
                 buzzer.alarmOff()
