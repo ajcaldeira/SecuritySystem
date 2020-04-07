@@ -14,7 +14,7 @@ def NumberFaces():
     except:
         print("STREAM NOT FOUND!")
         subprocess.Popen(["python3", "simple.py", "/dev/null"], stdout=subprocess.DEVNULL)
-        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"], stdout=FNULL, stderr=STDOUT)
+        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"], stdout=FNULL, stderr=subprocess.STDOUT)
         print("Stream Started!")
         time.sleep(5)
         NumberFaces()
