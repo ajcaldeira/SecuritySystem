@@ -58,7 +58,7 @@ if __name__ == '__main__':
                     t_start = datetime.now()
                     print('Notification sent!')
                 else:
-                    NOTIFICATION_COOLDOWN = CheckTime()
+                    NOTIFICATION_COOLDOWN = NOTIFICATION_COOLDOWN - CheckTime()
                     print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
             else:
                 buzzer.alarmOff()
