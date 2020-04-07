@@ -6,7 +6,6 @@ from datetime import datetime
 import os
 import subprocess
 import time
-FNULL = open(os.devnull, 'wb')
 def NumberFaces():
     CAPTURE_COOLDOWN = False
     try:
@@ -14,7 +13,7 @@ def NumberFaces():
     except:
         print("STREAM NOT FOUND!")
         subprocess.Popen(["python3", "simple.py", "/dev/null"], stdout=subprocess.DEVNULL)
-        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"], stdout=FNULL,stderr=FNULL)
+        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"])
         print("Stream Started!")
         time.sleep(5)
         NumberFaces()
