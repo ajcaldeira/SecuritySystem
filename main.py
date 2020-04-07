@@ -1,7 +1,7 @@
 from simple import *
 
 def main():
-  #RunCamera()
+  print("OK")
   
 if __name__== "__main__":
   main()
