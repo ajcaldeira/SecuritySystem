@@ -55,13 +55,12 @@ if __name__ == '__main__':
                 time.sleep(0.2)
                 buzzer.alarmOff()
                 time.sleep(0.2)
-                if NOTIFICATION_COOLDOWN <= 0:
+                if NOTIF_CD_MINS >= CheckTime(t_start):
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
                 else:
-                    var = CheckTime(t_start)
-                    print(f"Its been {var} seconds")
+                    
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS - CheckTime(t_start)
                     print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
             else:
