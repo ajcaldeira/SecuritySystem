@@ -55,6 +55,7 @@ if __name__ == '__main__':
                 if NOTIFICATION_COOLDOWN <= 0:
                     #send notification through mqtt that someone is too close
                     NOTIFICATION_COOLDOWN = 0.5
+                    print('Notification sent!')
                 else:
                     print('Notification on cooldown')
                     t_start = datetime.now()
