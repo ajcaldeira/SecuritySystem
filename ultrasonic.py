@@ -54,8 +54,8 @@ if __name__ == '__main__':
                 time.sleep(0.2)
                 if(t_start == 0):
                     t_start = datetime.now()
-                    CheckTime(t_start)
-                if NOTIFICATION_COOLDOWN <= 0:
+                    
+                if NOTIF_CD_MINS >= CheckTime(t_start):
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
