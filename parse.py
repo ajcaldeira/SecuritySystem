@@ -10,8 +10,9 @@ def NumberFaces():
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        os.system("python3 simple.py -0 > /dev/null 2>&1")
-        os.system("python3 ultrasonic.py -0 > /dev/null 2>&1")
+        os.system("python3 simple.py  > /dev/null 2>&1")
+        print("Stream Started!")
+        os.system("python3 ultrasonic.py  > /dev/null 2>&1")
         time.sleep(5)
         NumberFaces()
     bytes= b''
