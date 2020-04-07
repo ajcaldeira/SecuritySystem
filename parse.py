@@ -12,9 +12,10 @@ def NumberFaces():
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        list_files = subprocess.Popen(["python3", "simple.py", "/dev/null"])
-        #list_files = subprocess.Popen(["python3", "ultrasonic.py"], stdout=subprocess.DEVNULL)
+        subprocess.Popen(["python3", "simple.py", "/dev/null"])
         print("Stream Started!")
+        subprocess.Popen(["python3", "ultrasonic.py", "/dev/null"])
+        print("Ultrasonic Started!")
         time.sleep(5)
         NumberFaces()
     bytes= b''
