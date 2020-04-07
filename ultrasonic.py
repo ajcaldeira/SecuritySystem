@@ -57,7 +57,7 @@ if __name__ == '__main__':
                 if(FIRST_RUN == 1):
                     t_start = datetime.now()
                     FIRST_RUN = 0 #change this so it snot the first time anymore  
-                if NOTIF_CD_MINS <= CheckTime(t_start) and FIRST_RUN == 1:
+                if NOTIF_CD_MINS <= CheckTime(t_start) or FIRST_RUN == 1:
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     print('Notification sent!')
