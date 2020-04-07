@@ -1,3 +1,4 @@
+import os
 os.system("pkill -9 -f ultrasonic.py")
 os.system("pkill -9 -f main.py")
 os.system("pkill -9 -f simple.py")
