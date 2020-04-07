@@ -10,6 +10,9 @@ def NumberFaces():
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
+        os.system("python3 simple.py")
+        time.sleep(5)
+        NumberFaces()
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
     while True:
