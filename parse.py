@@ -4,15 +4,16 @@ import numpy as np
 import process_image
 from datetime import datetime
 import os
+import subprocess
 def NumberFaces():
     CAPTURE_COOLDOWN = False
     try:
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        os.system("python3 simple.py  > /dev/null 2>&1")
+        list_files = subprocess.run(["python3", "simple.py"],stdout=subprocess.DEVNULL)
+        print("The exit code was: %d" % list_files.returncode)
         print("Stream Started!")
-        os.system("python3 ultrasonic.py  > /dev/null 2>&1")
         time.sleep(5)
         NumberFaces()
     bytes= b''
