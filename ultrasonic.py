@@ -40,7 +40,7 @@ def sensor():
 def CheckTime():
     t_fin = datetime.now()
     time_diff = t_fin - t_start
-    return float(time_diff.total_seconds() / 60)
+    return round(float(time_diff.total_seconds() / 60),2)
         
 
 if __name__ == '__main__':
