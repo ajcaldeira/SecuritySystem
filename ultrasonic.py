@@ -52,7 +52,9 @@ if __name__ == '__main__':
                 time.sleep(0.2)
                 buzzer.alarmOff()
                 time.sleep(0.2)
-                CheckTime(t_start)
+                if(t_start = 0):
+                    t_start = datetime.now()
+                    CheckTime(t_start)
                 if NOTIFICATION_COOLDOWN <= 0:
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
