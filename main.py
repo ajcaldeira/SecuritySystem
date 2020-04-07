@@ -1,4 +1,4 @@
-import parse.py as parse
+import parse
 def main():
   parse.NumberFaces()
   print("OK")
