@@ -41,13 +41,14 @@ def CheckTime():
     t_fin = datetime.now()
     time_diff = t_fin - t_start
     return round(float(time_diff.total_seconds() / 60),2)
-        
-
+    
 if __name__ == '__main__':
     try:
         while True:
             dist = sensor()
             if dist < 10:
+                print(f'Notification on cooldown FIRST : {NOTIFICATION_COOLDOWN}')
+
                 buzzer.alarmOn()
                 time.sleep(0.2)
                 buzzer.alarmOff()
@@ -58,6 +59,7 @@ if __name__ == '__main__':
                     t_start = datetime.now()
                     print('Notification sent!')
                 else:
+                    
                     NOTIFICATION_COOLDOWN = NOTIFICATION_COOLDOWN - CheckTime()
                     print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
             else:
