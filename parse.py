@@ -11,7 +11,7 @@ def NumberFaces():
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
-        list_files = subprocess.run(["python3", "simple.py"],stdout=subprocess.DEVNULL)
+        list_files = subprocess.Popen(["python3", "simple.py"])
         print("The exit code was: %d" % list_files.returncode)
         print("Stream Started!")
         time.sleep(5)
