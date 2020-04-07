@@ -52,7 +52,7 @@ if __name__ == '__main__':
                     print('Notification on cooldown')
             else:
                 buzzer.alarmOff()
-            print(f"Distance: {dist}")
+            #print(f"Distance: {dist}")
             time.sleep(0.00001)
     except KeyboardInterrupt:
         print("Measurement stopped by User")
