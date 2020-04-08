@@ -3,7 +3,7 @@ import sys
 import writeDB
 import os
 def ProcessImage(IMG_LOC):
-    newStr = b64encode(IMG_LOC)
+    newStr = b64encode(str(IMG_LOC))
     writeDB.WriteImage(newStr,IMG_LOC[:-4])
     # with open(IMG_NAME, "rb") as img_file:
     #     img_str = base64.b64encode(img_file.read())
