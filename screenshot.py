@@ -12,7 +12,7 @@ import time
 def main():
     directory = '/home/pi/Desktop/SecuritySystem/'
     stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
-    os.chdir(directory)
+    
     bytes=b''
     while True:
         bytes += stream.read(1024)
@@ -24,11 +24,8 @@ def main():
             i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
             IMG_NAME = str(datetime.now().time())+ '.png' # time object
-            print("ok")
-
-            # cv2.imwrite(IMG_NAME,i)
-            # process_image.ProcessImage(IMG_NAME)
-            # print('image taken')
+            cv2.imwrite(IMG_NAME,i)
+            print('1')
             return 1
 
 if __name__== "__main__":
