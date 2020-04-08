@@ -25,7 +25,8 @@ def main():
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
             IMG_NAME = str(datetime.now().time())+ '.png' # time object
             cv2.imwrite(IMG_NAME,i)
-            print('1')
+            process_image.ProcessImage(IMG_NAME)
+            print(IMG_NAME[:-4])
             return 1
 
 if __name__== "__main__":

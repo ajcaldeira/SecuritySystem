@@ -5,13 +5,18 @@ import pymysql
 import return_pass
 import os
 import env
+import base64
 ENC_KEY = os.getenv('ENC_KEY')
 DB_PASS = os.getenv('DB_PASS')
-def WriteImage(img_data,date):
+def ReadImage(img_date):
     con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
     with con:    
         cur = con.cursor() 
-        cur.execute("INSERT INTO images (image, date) VALUES (HEX(AES_ENCRYPT(%s,'" + ENC_KEY + "')),%s)", 
-            (img_data, date))
+        cur.execute("SELECT AES_DECRYPT(unhex(image),'" + ENC_KEY + "') AS decImg from images WHERE date = %s", 
+            (img_date))
         con.commit()
+        rows = cur.fetchall()
+        for row in rows:
+            print("{0}".format(row[0]))
         cur.close()
+        
