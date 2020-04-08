@@ -1,6 +1,7 @@
 import base64
 import sys
 import writeDB
+import os
 def ProcessImage(IMG_NAME):
     newStr = base64.base64encode(os.path.join(WRITE_DIR,IMG_NAME))
     writeDB.WriteImage(newStr,IMG_NAME[:-4])
