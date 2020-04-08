@@ -17,9 +17,8 @@ def ReadImage(img_date):
             (img_date))
         rows = cur.fetchall()
         for row in rows:
-            print("here: {0}".format(row[0]))
+            print("{0}".format(row[0]))
         cur.close()
-        print("closing")
 
 if __name__== "__main__":
     ReadImage(str(sys.argv[1]))
