@@ -19,4 +19,6 @@ def ReadImage(img_date):
         for row in rows:
             print("{0}".format(row[0]))
         cur.close()
-        
+
+if __name__== "__main__":
+    ReadImage()
