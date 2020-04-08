@@ -26,6 +26,7 @@ def main():
             IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
             cv2.imwrite(os.path.join(WRITE_DIR,IMG_NAME),i)
             process_image.ProcessImage(os.path.join(WRITE_DIR,IMG_NAME),IMG_NAME)
+            return 0
 
 if __name__== "__main__":
     main()
