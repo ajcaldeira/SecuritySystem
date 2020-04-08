@@ -1,5 +1,8 @@
 import base64
+import sys
+sys.path.append("/home/pi/Desktop/SecuritySystem/")
 import writeDB
+
 def ProcessImage(IMG_NAME):
     with open(IMG_NAME, "rb") as img_file:
         img_str = base64.b64encode(img_file.read())

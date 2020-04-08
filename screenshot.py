@@ -1,4 +1,6 @@
 import cv2
+import sys
+sys.path.append("/home/pi/Desktop/SecuritySystem/")
 import urllib.request as urllibr
 import numpy as np
 import process_image
@@ -16,8 +18,6 @@ def main():
         bytes += stream.read(1024)
         a = bytes.find(b'\xff\xd8')
         b = bytes.find(b'\xff\xd9')
-        print(a)
-        print(b)
         if a != -1 and b != -1:
             jpg = bytes[a:b+2]
             bytes = bytes[b+2:]
@@ -25,8 +25,8 @@ def main():
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
             IMG_NAME = str(datetime.now().time())+ '.png' # time object
             cv2.imwrite(IMG_NAME,i)
-            process_image.ProcessImage(IMG_NAME)
-            print('image taken')
+            # process_image.ProcessImage(IMG_NAME)
+            # print('image taken')
             return 1
 
 if __name__== "__main__":

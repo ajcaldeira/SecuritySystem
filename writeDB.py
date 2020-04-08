@@ -1,5 +1,7 @@
 #DOCS: http://zetcode.com/db/mysqlpython/
 import pymysql
+import sys
+sys.path.append("/home/pi/Desktop/SecuritySystem/")
 import return_pass
 import os
 import env
@@ -9,7 +11,6 @@ def WriteImage(img_data,date):
     con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
     with con:    
         cur = con.cursor() 
-        
         cur.execute("INSERT INTO images (image, date) VALUES (HEX(AES_ENCRYPT(%s,'" + ENC_KEY + "')),%s)", 
             (img_data, date))
         con.commit()
