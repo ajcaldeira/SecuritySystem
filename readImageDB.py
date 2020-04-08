@@ -12,7 +12,8 @@ WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
 def ReadImage(img_date):
     #print(img_date)
     con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
-    with con:    
+    with con:
+        print("SELECT AES_DECRYPT(unhex(image),'" + ENC_KEY + "') AS decImg from images WHERE date =")
         cur = con.cursor() 
         cur.execute("SELECT AES_DECRYPT(unhex(image),'" + ENC_KEY + "') AS decImg from images WHERE date = %s", 
             (img_date))
