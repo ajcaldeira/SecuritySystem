@@ -16,6 +16,7 @@ def ReadImage(img_date):
             (img_date))
         rows = cur.fetchall()
         for row in rows:
+            print(str(row[0]))
             imgdata = b64decode(str(row[0]))#this is the decoded b64 img loc
             print(imgdata)
             
