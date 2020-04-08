@@ -26,7 +26,7 @@ def main():
             IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
             cv2.imwrite(IMG_NAME,i)
             process_image.ProcessImage(IMG_NAME)
-            print(IMG_NAME[:-4])
+            #print(IMG_NAME[:-4])
             return 1
 
 if __name__== "__main__":
