@@ -19,6 +19,7 @@ def ReadImage(img_date):
         rows = cur.fetchall()
         for row in rows:
             imgdata = base64.b64decode(str(row[0]))#this is the decided b64 img
+            print(str(row[0]))
             with open(img_date, 'wb') as f:
                 f.write(os.path.join(WRITE_DIR,imgdata, ".png"))
                 print(os.path.join(WRITE_DIR,imgdata, ".png"))
