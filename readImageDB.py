@@ -22,4 +22,4 @@ def ReadImage(img_date):
         print("closing")
 
 if __name__== "__main__":
-    ReadImage(str(sys.argv[0]))
+    ReadImage(str(sys.argv[1]))
