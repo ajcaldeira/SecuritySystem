@@ -17,7 +17,7 @@ def ReadImage(img_date):
         con.commit()
         rows = cur.fetchall()
         for row in rows:
-            print("{0}".format(row[0]))
+            print("here: {0}".format(row[0]))
         cur.close()
 
 if __name__== "__main__":
