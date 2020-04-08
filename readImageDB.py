@@ -9,6 +9,7 @@ import base64
 ENC_KEY = os.getenv('ENC_KEY')
 DB_PASS = os.getenv('DB_PASS')
 def ReadImage(img_date):
+    print(img_date)
     con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
     with con:    
         cur = con.cursor() 
@@ -18,6 +19,7 @@ def ReadImage(img_date):
         for row in rows:
             print("here: {0}".format(row[0]))
         cur.close()
+        print("closing")
 
 if __name__== "__main__":
     ReadImage(str(sys.argv[0]))
