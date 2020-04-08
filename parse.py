@@ -6,7 +6,6 @@ from datetime import datetime
 import os
 import subprocess
 import time
-FNULL = open(os.devnull, 'wb')
 
 def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sensor has been started
     CAPTURE_COOLDOWN = False
