@@ -21,7 +21,7 @@ def ReadImage(img_date):
             imgdata = base64.b64decode(row[0])#this is the decided b64 img
             with open(img_date, 'wb') as f:
                 f.write(os.path.join(WRITE_DIR,imgdata, ".png"))
-                print(imgdata)
+                print(os.path.join(WRITE_DIR,imgdata, ".png"))
             
              
         cur.close()
