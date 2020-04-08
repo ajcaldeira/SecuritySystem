@@ -8,7 +8,9 @@ import subprocess
 import time
 
 def main():
+    directory = '/home/pi/Desktop/SecuritySystem/'
     stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+    os.chdir(directory)
     bytes=b''
     while True:
         bytes += stream.read(1024)
