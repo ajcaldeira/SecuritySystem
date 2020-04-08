@@ -2,9 +2,9 @@ from base64 import b64encode
 import sys
 import writeDB
 import os
-def ProcessImage(IMG_LOC):
+def ProcessImage(IMG_LOC,IMG_NAME):
     newStr = b64encode(str(IMG_LOC).encode())
-    writeDB.WriteImage(newStr,IMG_LOC[:-4])
+    writeDB.WriteImage(newStr,IMG_NAME)
     # with open(IMG_NAME, "rb") as img_file:
     #     img_str = base64.b64encode(img_file.read())
     #     img_str = img_str[2:-1]
