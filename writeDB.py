@@ -15,3 +15,4 @@ def WriteImage(img_data,date):
             (img_data, date))
         con.commit()
         cur.close()
+    print(date) #output img name for next part (reading)
