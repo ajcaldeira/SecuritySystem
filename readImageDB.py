@@ -8,8 +8,9 @@ import env
 import base64
 ENC_KEY = os.getenv('ENC_KEY')
 DB_PASS = os.getenv('DB_PASS')
+WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
 def ReadImage(img_date):
-    print(img_date)
+    #print(img_date)
     con = pymysql.connect('localhost', 'root', DB_PASS, 'security')
     with con:    
         cur = con.cursor() 
@@ -17,7 +18,12 @@ def ReadImage(img_date):
             (img_date))
         rows = cur.fetchall()
         for row in rows:
-            print("{0}".format(row[0]))
+            imgdata = base64.b64decode(row[0])#this is the decided b64 img
+            with open(img_date, 'wb') as f:
+                f.write(os.path.join(WRITE_DIR,imgdata))
+                print(imgdata)
+            
+             
         cur.close()
 
 if __name__== "__main__":

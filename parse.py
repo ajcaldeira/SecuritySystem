@@ -41,7 +41,7 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
                 if not CAPTURE_COOLDOWN:
                     CAPTURE_COOLDOWN = True
-                    IMG_NAME = str(datetime.now().time())+ '.png' # time object
+                    IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
                     cv2.imwrite(IMG_NAME,i)
                     process_image.ProcessImage(IMG_NAME)
                     print('image taken')

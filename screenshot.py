@@ -23,7 +23,7 @@ def main():
             bytes = bytes[b+2:]
             i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
-            IMG_NAME = str(datetime.now().time())+ '.png' # time object
+            IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
             cv2.imwrite(IMG_NAME,i)
             process_image.ProcessImage(IMG_NAME)
             print(IMG_NAME[:-4])
