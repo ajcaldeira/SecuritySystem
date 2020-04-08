@@ -14,7 +14,6 @@ def ReadImage(img_date):
         cur = con.cursor() 
         cur.execute("SELECT AES_DECRYPT(unhex(image),'" + ENC_KEY + "') AS decImg from images WHERE date = %s", 
             (img_date))
-        con.commit()
         rows = cur.fetchall()
         for row in rows:
             print("here: {0}".format(row[0]))
