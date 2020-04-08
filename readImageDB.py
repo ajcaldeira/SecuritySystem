@@ -1,5 +1,5 @@
 #DOCS: http://zetcode.com/db/mysqlpython/
-import sys
+import sys, getopt
 sys.path.append("/home/pi/.local/lib/python3.7/site-packages/pymysql")
 import pymysql
 import return_pass
@@ -21,4 +21,4 @@ def ReadImage(img_date):
         cur.close()
 
 if __name__== "__main__":
-    ReadImage()
+    ReadImage(str(sys.argv[0]))
