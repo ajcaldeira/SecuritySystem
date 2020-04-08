@@ -5,4 +5,4 @@ def ProcessImage(IMG_NAME):
         img_str = base64.b64encode(img_file.read())
         img_str = img_str[2:-1]
         writeDB.WriteImage(img_str,IMG_NAME[:-4])
-    print(img_str)
+    #print(img_str)
