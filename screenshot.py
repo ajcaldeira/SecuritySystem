@@ -8,12 +8,14 @@ import subprocess
 import time
 
 def main():
-    try:
-        stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
-        bytes= b''
+    stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+    bytes=b''
+    while True:
         bytes += stream.read(1024)
         a = bytes.find(b'\xff\xd8')
         b = bytes.find(b'\xff\xd9')
+        print(a)
+        print(b)
         if a != -1 and b != -1:
             jpg = bytes[a:b+2]
             bytes = bytes[b+2:]
@@ -24,8 +26,6 @@ def main():
             process_image.ProcessImage(IMG_NAME)
             print('image taken')
             return 1
-    except:
-        return 0
 
 if __name__== "__main__":
-  main()
+    main()
