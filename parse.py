@@ -26,6 +26,7 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
         time.sleep(5)
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
+    WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
     while True:
         bytes += stream.read(1024)
         a = bytes.find(b'\xff\xd8')
@@ -42,8 +43,8 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
                 if not CAPTURE_COOLDOWN:
                     CAPTURE_COOLDOWN = True
                     IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
-                    cv2.imwrite(IMG_NAME,i)
-                    process_image.ProcessImage(IMG_NAME)
+                    cv2.imwrite(os.path.join(WRITE_DIR,IMG_NAME),i)
+                    process_image.ProcessImage(os.path.join(WRITE_DIR,IMG_NAME),IMG_NAME)
                     print('image taken')
             #cv2.imshow('i', i)
             if cv2.waitKey(1) == 27:
