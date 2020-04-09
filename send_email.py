@@ -24,11 +24,9 @@ def SendEmailNotification(img_url,time_now):
     html = f"""\
     <html>
     <body>
-        <h2>PiSecurity has taken a screenshot!</h2>
-        <h3>You can view or this on the app</h3>
-        <br>
+        <p>PiSecurity has taken a screenshot!</p>
+        <p>You can view or this on the app</p>
         <img src="{img_url}">
-        <br>
     </body>
     </html>
     """
