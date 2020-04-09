@@ -30,4 +30,4 @@ def SendEmailNotification(img_url):
         server.sendmail(sender_email, receiver_email, message)
 
 if __name__== "__main__":
-    SendEmailNotification("https://puu.sh/Fvs83/9d9c6852b1.png")
+    SendEmailNotification("https://puu.sh/Fvs83/9d9c6852b1.png".encode('utf-8'))
