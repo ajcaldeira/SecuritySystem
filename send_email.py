@@ -17,7 +17,7 @@ def SendEmailNotification(img_url):
     PiSecurity has taken a snapshot!
     You can delete this from the app if you wish.
 
-    <img src="{img_url}">
+    <img src='https://puu.sh/Fvs83/9d9c6852b1.png'>
     
     """
 
