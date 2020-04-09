@@ -20,7 +20,7 @@ def SendEmailNotification(img_url,time_now):
     message["To"] = receiver_email
     # Create the plain-text and HTML version of your message
     text = f"""\
-    Sent From PiSecurity at {time_now}"""
+    Sent From PiSecurity at {time_now} and {img_url}"""
     html = f"""\
     <html>
     <body>

@@ -24,8 +24,8 @@ def main():
             bytes = bytes[b+2:]
             i = cv2.imdecode(np.fromstring(jpg, dtype=np.uint8), cv2.IMREAD_COLOR)
             gray = cv2.cvtColor(i,cv2.COLOR_BGR2GRAY)
-            dateNow = datetime.now().timestamp()
-            IMG_NAME = str(dateNow)+ '.png' # time object
+            dateNow = datetime.now().timestamp()# time object
+            IMG_NAME = str(dateNow)+ '.png' 
             cv2.imwrite(os.path.join(WRITE_DIR,IMG_NAME),i)
             process_image.ProcessImage(os.path.join(WRITE_DIR,IMG_NAME),IMG_NAME)
             full_url = str(BASE_IMG_URL) + str(IMG_NAME)
