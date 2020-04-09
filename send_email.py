@@ -11,7 +11,7 @@ def SendEmailNotification(img_url):
     sender_email = EMAIL_USER
     receiver_email = "angelo.josey@gmail.com" #pull this from the db later
     password = EMAIL_PASS
-    message = f"""\
+    message = """\
     Subject: Snapshot taken!
 
     PiSecurity has taken a snapshot!
