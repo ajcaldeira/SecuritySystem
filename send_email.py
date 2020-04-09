@@ -29,7 +29,8 @@ def SendEmailNotification(img_url):
     <body>
         <p>Hi,<br>
         How are you?<br>
-        <a href="https://puu.sh/Fvs83/9d9c6852b1.png">Real Python</a> 
+        <a href="https://puu.sh/Fvs83/9d9c6852b1.png">Real Python</a>
+        <img src="https://puu.sh/Fvs83/9d9c6852b1.png">
         has many great tutorials.
         </p>
     </body>
