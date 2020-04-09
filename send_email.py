@@ -20,20 +20,21 @@ def SendEmailNotification(img_url,time_now):
     message["To"] = receiver_email
     # Create the plain-text and HTML version of your message
     text = f"""\
-    Sent From PiSecurity at {time_now} and {img_url}"""
+    Sent From PiSecurity at {time_now}"""
     html = f"""\
     <html>
     <body>
-        <p>PiSecurity has taken a screenshot!</p>
-        <p>You can view or this on the app</p>
+        <p>PiSecurity has taken a screenshot! <br>
+        You can view or this on the app <b4>
         <img src="{img_url}">
+        </p>
     </body>
     </html>
     """
 
     # Turn these into plain/html MIMEText objects
-    part2 = MIMEText(text, "plain")
-    part1 = MIMEText(html, "html")
+    part1 = MIMEText(text, "plain")
+    part2 = MIMEText(html, "html")
 
     # Add HTML/plain-text parts to MIMEMultipart message
     # The email client will try to render the last part first
