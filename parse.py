@@ -6,8 +6,10 @@ from datetime import datetime
 import os
 import subprocess
 import time
+import send_email
 
 def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sensor has been started
+    BASE_IMG_URL = os.getenv('BASE_IMG_URL')
     CAPTURE_COOLDOWN = False
     try:
         stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
@@ -42,9 +44,12 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
                 if not CAPTURE_COOLDOWN:
                     CAPTURE_COOLDOWN = True
-                    IMG_NAME = str(datetime.now().timestamp())+ '.png' # time object
+                    dateNow = datetime.now().timestamp()
+                    IMG_NAME = str(dateNow)+ '.png' # time object
                     cv2.imwrite(os.path.join(WRITE_DIR,IMG_NAME),i)
                     process_image.ProcessImage(os.path.join(WRITE_DIR,IMG_NAME),IMG_NAME)
+                    full_url = str(BASE_IMG_URL) + str(IMG_NAME)
+                    send_email.SendEmailNotification(full_url,datetime.fromtimestamp(dateNow))
                     print('image taken')
             #cv2.imshow('i', i)
             if cv2.waitKey(1) == 27:
