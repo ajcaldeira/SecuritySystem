@@ -24,13 +24,13 @@ def SendEmailNotification(img_url):
     How are you?
     Real Python has many great tutorials:
     www.realpython.com"""
-    html = """\
+    html = f"""\
     <html>
     <body>
         <p>Hi,<br>
         How are you?<br>
         <a href="https://puu.sh/Fvs83/9d9c6852b1.png">Real Python</a>
-        <img src="https://puu.sh/Fvs83/9d9c6852b1.png">
+        <img src="{img_url}">
         has many great tutorials.
         </p>
     </body>
