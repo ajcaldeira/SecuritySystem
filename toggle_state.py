@@ -15,11 +15,13 @@ def TurnOn():
 def Restart():
     TurnOff()
     time.sleep(3)
+    print("Turned off")
     RestartNGINX()
     time.sleep(2)
+    print("Restarted Server")
     TurnOn()
     time.sleep(5)
-    print("Restarted")
-    
+    print("Turned On")
+
 if __name__== "__main__":
     Restart()
