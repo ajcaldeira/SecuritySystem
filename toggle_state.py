@@ -9,7 +9,7 @@ def TurnOff():
     subprocess.Popen(["python3", "/home/pi/Desktop/SecuritySystem/kill_all.py"])
 
 def TurnOn():
-    subprocess.Popen(["python3", "/home/pi/Desktop/SecuritySystem/main.py"])
+    subprocess.Popen(["python3", "/home/pi/Desktop/SecuritySystem/main.py", "/dev/null"], stdout=subprocess.DEVNULL)
 
 
 def Restart():
@@ -22,4 +22,4 @@ def Restart():
     print("Restarted")
     
 if __name__== "__main__":
-  TurnOff()
+    Restart()
