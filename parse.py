@@ -7,15 +7,16 @@ import os
 import subprocess
 import time
 import send_email
-NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
-NOTIF_CD_MINS = 300 # 5 mins
-FIRST_RUN = 1
+
 def CheckTime(t_start):
     t_fin = datetime.now()
     time_diff = t_fin - t_start
     return round(float(time_diff.total_seconds()),2)
 
 def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sensor has been started
+    NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
+    NOTIF_CD_MINS = 300 # 5 mins
+    FIRST_RUN = 1
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')
     CAPTURE_COOLDOWN = False
     try:
