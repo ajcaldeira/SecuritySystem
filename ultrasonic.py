@@ -3,6 +3,8 @@ import time
 from datetime import datetime
 GPIO.setmode(GPIO.BCM)
 import buzzer
+import os
+import send_email
 TRIG = 17 #orange
 ECHO = 23 #green
 SPEED_SOUND = 34300
@@ -15,22 +17,27 @@ GPIO.setup(ECHO,GPIO.IN)
 t_start = 0
 t_fin = 0
 FIRST_RUN = 1
+MAX_TIME = 0.04
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
-    pulse_start = 0
-    pulse_end = 0
+    # pulse_start = 0
+    pulse_start = time.time()
+    pulse_end = time.time()
     #time for it to start
     time.sleep(0.1)
 
     GPIO.output(TRIG,True)
     time.sleep(0.0000001)
     GPIO.output(TRIG,False)
+    #timeout to stop it from craching
+    timout = pulse_start + MAX_TIME
 
-    while GPIO.input(ECHO) == 0:
+    while GPIO.input(ECHO) == 0 and pulse_start < timeout: #this shoulD always fire now incase the 0 is missed
         pulse_start = time.time()
 
-    while GPIO.input(ECHO) == 1:
+    timeout = pulse_end + MAX_TIME
+    while GPIO.input(ECHO) == 1 and pulse_end < timeout: #this shouLS always fire now incase the 0 is missed
         pulse_end = time.time()
         
     pulse_duration = pulse_end - pulse_start
@@ -60,6 +67,7 @@ if __name__ == '__main__':
                     FIRST_RUN = 0 #change this so it snot the first time anymore
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
+                    send_email.SendEmailAlarm(t_start)
                     print('Notification sent!')
                 else:
                     var = CheckTime(t_start)
@@ -71,6 +79,6 @@ if __name__ == '__main__':
             #print(f"Distance: {dist}")
             time.sleep(0.00001)
     except KeyboardInterrupt:
-        print("Measurement stopped by User")
+        print("Stopped by User")
         GPIO.cleanup()
 
