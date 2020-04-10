@@ -21,14 +21,13 @@ MAX_TIME = 0.04
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
-    # pulse_start = 0
     pulse_start = 0
     pulse_end = 0
     #time for it to start
     time.sleep(0.1)
 
     GPIO.output(TRIG,True)
-    time.sleep(0.0000001)
+    time.sleep(0.00001)
     GPIO.output(TRIG,False)
     #timeout to stop it from craching
     
