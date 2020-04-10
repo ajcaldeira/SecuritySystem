@@ -55,7 +55,7 @@ if __name__ == '__main__':
     try:
         while True:
             dist = sensor()
-            print(dist)
+            
             if dist < 10:
                 buzzer.alarmOn()
                 time.sleep(0.2)
