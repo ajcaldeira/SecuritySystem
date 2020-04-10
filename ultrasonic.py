@@ -17,29 +17,34 @@ GPIO.setup(ECHO,GPIO.IN)
 t_start = 0
 t_fin = 0
 FIRST_RUN = 1
-MAX_TIME = 0.0004
+MAX_TIME = 0.04
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
     # pulse_start = 0
-    pulse_start = time.time()
+    pulse_start = 0
     timeout = pulse_start + MAX_TIME
-    pulse_end = time.time()
+    pulse_end = 0
     #time for it to start
     time.sleep(0.1)
 
     GPIO.output(TRIG,True)
-    time.sleep(0.0000001)
+    time.sleep(0.00001)
     GPIO.output(TRIG,False)
     #timeout to stop it from craching
     
 
     while GPIO.input(ECHO) == 0 and pulse_start < timeout: #this should always fire now incase the 0 is missed
         pulse_start = time.time()
+        print("1 while")
+        print(pulse_start)
+       
 
     timeout = pulse_end + MAX_TIME
     while GPIO.input(ECHO) == 1 and pulse_end < timeout: #this shouLS always fire now incase the 0 is missed
         pulse_end = time.time()
+        print("2 while")
+        print(pulse_end)
         
     pulse_duration = pulse_end - pulse_start
 
