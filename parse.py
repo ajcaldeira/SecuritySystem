@@ -7,6 +7,13 @@ import os
 import subprocess
 import time
 import send_email
+NOTIFICATION_COOLDOWN = 0 #MINS TIL NEXT NOTIFICATION WILL BE SENT
+NOTIF_CD_MINS = 300 # 5 mins
+FIRST_RUN = 1
+def CheckTime(t_start):
+    t_fin = datetime.now()
+    time_diff = t_fin - t_start
+    return round(float(time_diff.total_seconds()),2)
 
 def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sensor has been started
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')
@@ -42,8 +49,13 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
             #print(faces)
             for (x,y,w,h) in faces:
                 cv2.rectangle(i,(x,y),(x+w,y+h),(255,255,0),2)
-                if not CAPTURE_COOLDOWN:
-                    CAPTURE_COOLDOWN = True
+                #first time its executing
+                if(FIRST_RUN == 1):
+                    t_start = datetime.now()
+                if NOTIF_CD_MINS <= CheckTime(t_start) or FIRST_RUN == 1:
+                    FIRST_RUN = 0 #change this so its not the first time anymore
+                    NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
+                    t_start = datetime.now()
                     dateNow = datetime.now().timestamp()
                     IMG_NAME = str(dateNow)+ '.png' # time object
                     cv2.imwrite(os.path.join(WRITE_DIR,IMG_NAME),i)
@@ -51,6 +63,14 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
                     full_url = str(BASE_IMG_URL) + str(IMG_NAME)
                     send_email.SendEmailNotification(full_url,datetime.fromtimestamp(dateNow))
                     print('image taken')
+                else:
+                    var = CheckTime(t_start)
+                    print(f"Its been {var} seconds")
+                    NOTIFICATION_COOLDOWN = NOTIF_CD_MINS - CheckTime(t_start)
+                    print(f'Notification on cooldown: {NOTIFICATION_COOLDOWN}')
+                if not CAPTURE_COOLDOWN:
+                    CAPTURE_COOLDOWN = True
+                    
             #cv2.imshow('i', i)
             if cv2.waitKey(1) == 27:
                 exit(0)

@@ -65,7 +65,7 @@ if __name__ == '__main__':
                 if(FIRST_RUN == 1):
                     t_start = datetime.now()  
                 if NOTIF_CD_MINS <= CheckTime(t_start) or FIRST_RUN == 1:
-                    FIRST_RUN = 0 #change this so it snot the first time anymore
+                    FIRST_RUN = 0 #change this so its not the first time anymore
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
                     send_email.SendEmailAlarm(t_start)
