@@ -17,7 +17,7 @@ GPIO.setup(ECHO,GPIO.IN)
 t_start = 0
 t_fin = 0
 FIRST_RUN = 1
-MAX_TIME = 0.04
+MAX_TIME = 0.0004
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
