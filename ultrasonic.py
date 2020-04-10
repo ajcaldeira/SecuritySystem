@@ -30,7 +30,7 @@ def sensor():
     #timeout to stop it from craching
     
     pulse_start = time.time()
-    timeout = pulse_end + MAX_TIME
+    timeout = pulse_start + MAX_TIME
     print(f'pulse start: {timeout}')
     while GPIO.input(ECHO) == 0: #this should always fire now incase the 0 is missed
         pulse_start = time.time()
