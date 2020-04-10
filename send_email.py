@@ -5,20 +5,18 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 import env
-def SetVars():
-    EMAIL_USER = os.getenv('EMAIL_USER')
-    EMAIL_PASS = os.getenv('EMAIL_PASS')
-    port = 587  # For starttls
-    smtp_server = "smtp.gmail.com"
-    sender_email = EMAIL_USER
-    receiver_email = "angelo.josey@gmail.com" #pull this from the db later
-    password = EMAIL_PASS
-    message = MIMEMultipart("alternative")
-    message["Subject"] = "PiSecurity"
-    message["From"] = sender_email
-    message["To"] = receiver_email
+EMAIL_USER = os.getenv('EMAIL_USER')
+EMAIL_PASS = os.getenv('EMAIL_PASS')
+port = 587  # For starttls
+smtp_server = "smtp.gmail.com"
+sender_email = EMAIL_USER
+receiver_email = "angelo.josey@gmail.com" #pull this from the db later
+password = EMAIL_PASS
+message = MIMEMultipart("alternative")
+message["Subject"] = "PiSecurity"
+message["From"] = sender_email
+message["To"] = receiver_email
 def SendEmailNotification(img_url,time_now):
-    SetVars()
     # Create the plain-text and HTML version of your message
     text = f"""\
     Sent From PiSecurity at {time_now}"""
@@ -51,7 +49,6 @@ def SendEmailNotification(img_url,time_now):
         )
 
 def SendEmailAlarm(time_now):
-    SetVars()
     # Create the plain-text and HTML version of your message
     text = f"""\
     Sent From PiSecurity at {time_now}"""
