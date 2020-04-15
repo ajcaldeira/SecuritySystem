@@ -13,7 +13,8 @@ def main():
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')
     # directory = '/home/pi/Desktop/SecuritySystem/'
     stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
-    WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
+    # WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
+    WRITE_DIR = '/home/pi/Desktop/SecuritySystem/temp_img'
     bytes=b''
     while True:
         bytes += stream.read(1024)

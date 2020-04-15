@@ -36,7 +36,8 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
         time.sleep(5)
     bytes= b''
     face_cascade = cv2.CascadeClassifier('/home/pi/Desktop/haarcascade_frontalface_default.xml')
-    WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
+    # WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
+    WRITE_DIR = '/home/pi/Desktop/SecuritySystem/temp_img'
     while True:
         bytes += stream.read(1024)
         a = bytes.find(b'\xff\xd8')
