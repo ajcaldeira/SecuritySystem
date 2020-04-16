@@ -64,7 +64,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                 self.send_header('Pragma', 'no-cache')
                 self.send_header('Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
                 self.end_headers()
-            else
+            else:
                 self.send_response(301)
                 self.send_header('Location', 'https://www.google.com/')
             try:
