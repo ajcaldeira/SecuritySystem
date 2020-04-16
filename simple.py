@@ -83,7 +83,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                     
             except Exception as e:
                 #logging.warning('')
-               
+                print('')
         else:
             self.send_error(404)
             self.end_headers()
