@@ -52,7 +52,7 @@ def CheckTime(t_start):
     time_diff = t_fin - t_start
     return round(float(time_diff.total_seconds()),2)
 
-def SendeMailLocal(t_start):
+def SendeMailLocal():
     t_start = datetime.now()
     send_email.SendEmailAlarm(t_start)
 
