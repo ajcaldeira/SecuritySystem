@@ -24,8 +24,8 @@ def SendEmailNotification(img_url,time_now):
     <html>
     <body>
         <p>PiSecurity has taken a screenshot! <br>
-        You can view or delete this in the app. <b4>
-        <img src="{img_url}">
+        You can view or delete this in the app. <br>
+        
         </p>
     </body>
     </html>

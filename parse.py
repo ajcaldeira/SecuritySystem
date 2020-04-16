@@ -7,7 +7,7 @@ import os
 import subprocess
 import time
 import send_email
-
+VIDEO_KEY = os.getenv('VIDEO_KEY')
 def CheckTime(t_start):
     t_fin = datetime.now()
     time_diff = t_fin - t_start
@@ -20,7 +20,7 @@ def NumberFaces(US_STARTED = False): #US_STARTED to check if the Ultrasonic sens
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')
     CAPTURE_COOLDOWN = False
     try:
-        stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+        stream = urllibr.urlopen('http://localhost:1654/'+ VIDEO_KEY +'/stream.mjpg')
     except:
         print("STREAM NOT FOUND!")
         subprocess.Popen(["python3", "simple.py", "/dev/null"], stdout=subprocess.DEVNULL)

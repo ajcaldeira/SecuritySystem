@@ -9,10 +9,11 @@ import os
 import subprocess
 import time
 import send_email
+VIDEO_KEY = os.getenv('VIDEO_KEY')
 def main():
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')
     # directory = '/home/pi/Desktop/SecuritySystem/'
-    stream = urllibr.urlopen('http://localhost:1654/stream.mjpg')
+    stream = urllibr.urlopen('http://localhost:1654/'+ VIDEO_KEY +'/stream.mjpg')
     # WRITE_DIR = '/var/www/html/ThesisMobileApp/temp_img'
     WRITE_DIR = '/home/pi/Desktop/SecuritySystem/temp_img'
     bytes=b''

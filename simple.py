@@ -13,6 +13,7 @@ import cv2
 import numpy
 #from parse import NumberFaces
 from time import sleep
+VIDEO_KEY = os.getenv('VIDEO_KEY')
 PAGE="""\
 <html>
 <head>
@@ -53,7 +54,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', len(content))
             self.end_headers()
             self.wfile.write(content)
-        elif self.path == '/stream.mjpg':
+        elif self.path == '/' + VIDEO_KEY + '/stream.mjpg':
             self.send_response(200)
             self.send_header('Age', 0)
             self.send_header('Cache-Control', 'no-cache, private')
