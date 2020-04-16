@@ -9,6 +9,7 @@ import os
 import subprocess
 import time
 import send_email
+import env
 VIDEO_KEY = os.getenv('VIDEO_KEY')
 def main():
     BASE_IMG_URL = os.getenv('BASE_IMG_URL')

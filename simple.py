@@ -11,6 +11,8 @@ from threading import Condition
 from http import server
 import cv2
 import numpy
+import os
+import env
 #from parse import NumberFaces
 from time import sleep
 VIDEO_KEY = os.getenv('VIDEO_KEY')
