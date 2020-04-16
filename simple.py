@@ -13,6 +13,9 @@ import cv2
 import numpy
 #from parse import NumberFaces
 from time import sleep
+import urllib.request
+external_ip = urllib.request.urlopen('http://ifconfig.me/ip').read()
+
 PAGE="""\
 <html>
 <head>
@@ -54,13 +57,16 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(content)
         elif self.path == '/stream.mjpg':
-            self.send_response(200)
-            self.send_header('Age', 0)
-            self.send_header('Cache-Control', 'no-cache, private')
-            self.send_header('Pragma', 'no-cache')
-            self.send_header('Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
-            self.end_headers()
-            
+            if external_ip == "92.237.252.20":
+                self.send_response(200)
+                self.send_header('Age', 0)
+                self.send_header('Cache-Control', 'no-cache, private')
+                self.send_header('Pragma', 'no-cache')
+                self.send_header('Content-Type', 'multipart/x-mixed-replace; boundary=FRAME')
+                self.end_headers()
+            else
+                self.send_response(301)
+                self.send_header('Location', 'https://www.google.com/')
             try:
                 while True:
                     with output.condition:
