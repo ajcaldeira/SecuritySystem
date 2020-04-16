@@ -57,7 +57,11 @@ def CheckTime(t_start):
     t_fin = datetime.now()
     time_diff = t_fin - t_start
     return round(float(time_diff.total_seconds()),2)
-    
+
+def SendeMailLocal(t_start):
+    t_start = datetime.now()
+    send_email.SendEmailAlarm(t_start)
+
 if __name__ == '__main__':
     th = threading.Thread(target=test)
     try:
@@ -76,7 +80,7 @@ if __name__ == '__main__':
                     FIRST_RUN = 0 #change this so its not the first time anymore
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
-                    Thread(target=test).send_email.SendEmailAlarm(t_start)
+                    Thread(target=SendeMailLocal).start()
                     print('Notification sent!')
                 else:
                     var = CheckTime(t_start)
