@@ -57,6 +57,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(content)
         elif self.path == '/stream.mjpg':
+            print(external_ip)
             if external_ip == "92.237.252.20":
                 self.send_response(200)
                 self.send_header('Age', 0)
@@ -67,6 +68,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
             else:
                 self.send_response(301)
                 self.send_header('Location', 'https://www.google.com/')
+                self.end_headers()
             try:
                 while True:
                     with output.condition:
@@ -81,7 +83,7 @@ class StreamingHandler(server.BaseHTTPRequestHandler):
                     
             except Exception as e:
                 #logging.warning('')
-                print('')
+               
         else:
             self.send_error(404)
             self.end_headers()
