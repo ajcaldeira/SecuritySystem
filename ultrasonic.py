@@ -18,6 +18,13 @@ t_start = 0
 t_fin = 0
 FIRST_RUN = 1
 MAX_TIME = 0.5
+
+######## THREADS #########
+from threading import Thread
+######## THREADS END #########
+
+
+
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
@@ -52,6 +59,7 @@ def CheckTime(t_start):
     return round(float(time_diff.total_seconds()),2)
     
 if __name__ == '__main__':
+    th = threading.Thread(target=test)
     try:
         while True:
             dist = sensor()
@@ -68,7 +76,7 @@ if __name__ == '__main__':
                     FIRST_RUN = 0 #change this so its not the first time anymore
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
-                    send_email.SendEmailAlarm(t_start)
+                    Thread(target=test).send_email.SendEmailAlarm(t_start)
                     print('Notification sent!')
                 else:
                     var = CheckTime(t_start)
