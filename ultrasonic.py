@@ -19,12 +19,6 @@ t_fin = 0
 FIRST_RUN = 1
 MAX_TIME = 0.5
 
-######## THREADS #########
-from threading import Thread
-######## THREADS END #########
-
-
-
 def sensor():
     GPIO.output(TRIG,False)
     #initialise
@@ -80,6 +74,7 @@ if __name__ == '__main__':
                     FIRST_RUN = 0 #change this so its not the first time anymore
                     NOTIFICATION_COOLDOWN = NOTIF_CD_MINS
                     t_start = datetime.now()
+                    from threading import Thread
                     Thread(target=SendeMailLocal).start()
                     print('Notification sent!')
                 else:
