@@ -57,7 +57,6 @@ def SendeMailLocal(t_start):
     send_email.SendEmailAlarm(t_start)
 
 if __name__ == '__main__':
-    th = threading.Thread(target=test)
     try:
         while True:
             dist = sensor()
