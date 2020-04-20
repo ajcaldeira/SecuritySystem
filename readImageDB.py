@@ -2,7 +2,6 @@
 import sys, getopt
 sys.path.append("/home/pi/.local/lib/python3.7/site-packages/pymysql")
 import pymysql
-import return_pass
 import os
 import env
 from base64 import b64decode

@@ -2,7 +2,6 @@
 import sys
 sys.path.append("/home/pi/.local/lib/python3.7/site-packages/pymysql")
 import pymysql
-import return_pass
 import os
 import env
 ENC_KEY = os.getenv('ENC_KEY')
